@@ -31,6 +31,7 @@ BuildRequires:	perl-Tree-Simple-VisitorFactory
 BuildRequires:	perl-UNIVERSAL-exports
 BuildRequires:	perl-URI
 %endif
+Requires:	perl-libapreq2 >= 2.05-0.1
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
