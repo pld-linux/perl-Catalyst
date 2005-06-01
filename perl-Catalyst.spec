@@ -23,6 +23,8 @@ BuildRequires:	perl-libwww
 BuildRequires:	perl-Module-Pluggable-Fast >= 0.15
 BuildRequires:	perl-Path-Class
 BuildRequires:	perl-Template-Toolkit
+BuildRequires:	perl-Test-Pod >= 1.14
+BuildRequires:	perl-Test-Pod-Coverage >= 1.04
 BuildRequires:	perl-Text-ASCIITable
 BuildRequires:	perl-Tree-Simple
 BuildRequires:	perl-Tree-Simple-VisitorFactory
