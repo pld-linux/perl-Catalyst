@@ -74,20 +74,29 @@ Silnik Catalyst dla Apache'a.
 
 %package Engine-CGI-APR
 Summary:	Catalyst::Engine::CGI::APR - The CGI APR Engine
+Summary(pl):	Catalyst::Engine::CGI::APR - silnik CGI APR
 Group:		Development/Languages/Perl
 
 %description Engine-CGI-APR
 This is the Catalyst engine that uses Apache Portable Runtime for
 parsing CGI parameters.
 
+%description Engine-CGI-APR -l pl
+To jest silnik Catalyst u¿ywaj±cy biblioteki Apache Portable Runtime
+do przetwarzania parametrów CGI.
+
 %package Engine-FastCGI-APR
 Summary:	Catalyst::Engine::FastCGI::APR - The FastCGI APR Engine
+Summary(pl):	Catalyst::Engine::FastCGI::APR - silnik FastCGI APR
 Group:		Development/Languages/Perl
 
 %description Engine-FastCGI-APR
-This is the Catalyst FastCGI engine that uses Apache Portable Runtime for
-parsing CGI parameters.
+This is the Catalyst FastCGI engine that uses Apache Portable Runtime
+for parsing CGI parameters.
 
+%description Engine-FastCGI-APR -l pl
+To jest silnik Catalyst FastCGI u¿ywaj±cy biblioteki Apache Portable
+Runtime od przetwarzania parametrów CGI.
 
 %package Engine-FastCGI
 Summary:	Engine for FastCGI
