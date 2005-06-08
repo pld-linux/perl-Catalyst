@@ -150,6 +150,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorlib}/Catalyst/*.pm
 %{perl_vendorlib}/Catalyst/Engine
 %{perl_vendorlib}/Catalyst/Helper
+%dir %{perl_vendorlib}/Catalyst/View
 %dir %{perl_vendorlib}/Catalyst/Plugin
 %exclude %{perl_vendorlib}/Catalyst/Engine/*/APR.pm
 %exclude %{perl_vendorlib}/Catalyst/Engine/Apache*
