@@ -6,13 +6,13 @@
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.23
+Version:	5.30
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-authors/id/M/MR/MRAMBERG/Catalyst-%{version}.tar.gz
-# Source0-md5:	1c7884afec0b256ecb05f5bd5064f46a
+# Source0-md5:	a6be9439085179b379f6b14ab371c6e2
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -23,7 +23,8 @@ BuildRequires:	perl-Module-Pluggable-Fast >= 0.15
 BuildRequires:	perl-Path-Class
 BuildRequires:	perl-Template-Toolkit
 BuildRequires:	perl-Test-Pod >= 1.14
-BuildRequires:	perl-Test-Pod-Coverage >= 1.04
+# Not in PLD yet
+#BuildRequires:	perl-Test-Pod-Coverage >= 1.04
 BuildRequires:	perl-Text-ASCIITable
 BuildRequires:	perl-Tree-Simple
 BuildRequires:	perl-Tree-Simple-VisitorFactory
@@ -136,8 +137,8 @@ rm -rf $RPM_BUILD_ROOT
 
 ./Build install
 
-install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{Helper,Plugin}
-install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{Model,View}
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model,Plugin}
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{View,Model}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -151,6 +152,7 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorlib}/Catalyst/Engine
 %{perl_vendorlib}/Catalyst/Helper
 %dir %{perl_vendorlib}/Catalyst/View
+%dir %{perl_vendorlib}/Catalyst/Model
 %dir %{perl_vendorlib}/Catalyst/Plugin
 %exclude %{perl_vendorlib}/Catalyst/Engine/*/APR.pm
 %exclude %{perl_vendorlib}/Catalyst/Engine/Apache*
