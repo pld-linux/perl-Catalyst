@@ -6,31 +6,29 @@
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.33
+Version:	5.52
 Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-authors/id/M/MR/MRAMBERG/Catalyst-%{version}.tar.gz
-# Source0-md5:	67e50b433f721ff4e4f138c6c60dd746
+Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-%{version}.tar.gz
+# Source0-md5:	0d6e2e4e5465a755de859df04f681454
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Class-Accessor
 BuildRequires:	perl-Class-Data-Inheritable
 BuildRequires:	perl-HTML-Parser
-BuildRequires:	perl-Module-Pluggable-Fast >= 0.15
-BuildRequires:	perl-Path-Class
+BuildRequires:	perl-HTTP-Body >= 0.4
+BuildRequires:	perl-libwww
+BuildRequires:	perl-Module-Pluggable-Fast >= 0.16
+BuildRequires:	perl-Path-Class >= 0.09
 BuildRequires:	perl-Template-Toolkit
-BuildRequires:	perl-Test-Pod >= 1.14
-# Not in PLD yet
-#BuildRequires:	perl-Test-Pod-Coverage >= 1.04
-BuildRequires:	perl-Text-ASCIITable
+BuildRequires:	perl-Text-SimpleTable
 BuildRequires:	perl-Tree-Simple
 BuildRequires:	perl-Tree-Simple-VisitorFactory
-BuildRequires:	perl-UNIVERSAL-exports
-BuildRequires:	perl-URI
-BuildRequires:	perl-libwww
+BuildRequires:	perl-UNIVERSAL-require >= 0.10
+BuildRequires:	perl-URI >= 1.35
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -62,42 +60,6 @@ bez wp³ywania na kod obs³uguj±cy co innego. Catalyst skutecznie
 poszerza wielokrotn± u¿ywalno¶æ istniej±cych modu³ów perla
 obs³uguj±cych ró¿ne aspekty aplikacji WWW.
 
-%package Engine-Apache
-Summary:	Engine for Apache
-Summary(pl):	Silnik dla Apache'a
-Group:		Development/Languages/Perl
-
-%description Engine-Apache
-This is the Catalyst engine for mod_perl.
-
-%description Engine-Apache -l pl
-Silnik Catalyst dla Apache'a.
-
-%package Engine-CGI-APR
-Summary:	Catalyst::Engine::CGI::APR - The CGI APR Engine
-Summary(pl):	Catalyst::Engine::CGI::APR - silnik CGI APR
-Group:		Development/Languages/Perl
-
-%description Engine-CGI-APR
-This is the Catalyst engine that uses Apache Portable Runtime for
-parsing CGI parameters.
-
-%description Engine-CGI-APR -l pl
-To jest silnik Catalyst u¿ywaj±cy biblioteki Apache Portable Runtime
-do przetwarzania parametrów CGI.
-
-%package Engine-FastCGI-APR
-Summary:	Catalyst::Engine::FastCGI::APR - The FastCGI APR Engine
-Summary(pl):	Catalyst::Engine::FastCGI::APR - silnik FastCGI APR
-Group:		Development/Languages/Perl
-
-%description Engine-FastCGI-APR
-This is the Catalyst FastCGI engine that uses Apache Portable Runtime
-for parsing CGI parameters.
-
-%description Engine-FastCGI-APR -l pl
-To jest silnik Catalyst FastCGI u¿ywaj±cy biblioteki Apache Portable
-Runtime od przetwarzania parametrów CGI.
 
 %package Engine-FastCGI
 Summary:	Engine for FastCGI
@@ -137,7 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 
 ./Build install
 
-install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model,Plugin}
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model}
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{View,Model}
 
 %clean
@@ -151,44 +113,20 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorlib}/Catalyst/*.pm
 %{perl_vendorlib}/Catalyst/Engine
 %{perl_vendorlib}/Catalyst/Helper
+%{perl_vendorlib}/Catalyst/DispatchType
 %dir %{perl_vendorlib}/Catalyst/View
 %dir %{perl_vendorlib}/Catalyst/Model
-%dir %{perl_vendorlib}/Catalyst/Plugin
-%exclude %{perl_vendorlib}/Catalyst/Engine/*/APR.pm
-%exclude %{perl_vendorlib}/Catalyst/Engine/Apache*
+%{perl_vendorlib}/Catalyst/Plugin
 %exclude %{perl_vendorlib}/Catalyst/Engine/FastCGI*
-%exclude %{perl_vendorlib}/Catalyst/Engine/SpeedyCGI*
 
 %{perl_vendorlib}/Catalyst/Request
 %attr(755,root,root) %{_bindir}/catalyst.pl
-%exclude %{_mandir}/man3/*Apache*
 %exclude %{_mandir}/man3/*FastCGI*
-%exclude %{_mandir}/man3/*SpeedyCGI*
-%exclude %{_mandir}/man3/*APR*
 %{_mandir}/man3/*
 %{_mandir}/man1/*
 
-%files Engine-Apache
-%defattr(644,root,root,755)
-%{perl_vendorlib}/Catalyst/Engine/Apache*
-%{_mandir}/man3/Catalyst::Engine::Apache*
-
-%files Engine-CGI-APR
-%defattr(644,root,root,755)
-%{perl_vendorlib}/Catalyst/Engine/CGI/APR.pm
-%{_mandir}/man3/Catalyst::Engine::CGI::APR*
 
 %files Engine-FastCGI
 %defattr(644,root,root,755)
 %{perl_vendorlib}/Catalyst/Engine/FastCGI*
 %{_mandir}/man3/Catalyst::Engine::FastCGI*
-
-%files Engine-FastCGI-APR
-%defattr(644,root,root,755)
-%{perl_vendorlib}/Catalyst/Engine/FastCGI/APR.pm
-%{_mandir}/man3/Catalyst::Engine::FastCGI::APR*
-
-%files Engine-SpeedyCGI
-%defattr(644,root,root,755)
-%{perl_vendorlib}/Catalyst/Engine/SpeedyCGI*
-%{_mandir}/man3/Catalyst::Engine::SpeedyCGI*
