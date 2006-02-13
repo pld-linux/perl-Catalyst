@@ -6,30 +6,32 @@
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.56
-Release:	1
+Version:	5.63
+Release:	0.1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-%{version}.tar.gz
-# Source0-md5:	dac87cf48ddcf9a6c83e016deb85c415
+# Source0-md5:	404a98d91c3c47bbafa0070606213421
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-Class-Accessor
 BuildRequires:	perl-Class-Data-Inheritable
+BuildRequires:	perl-ExtUtils-AutoInstall
 BuildRequires:	perl-HTML-Parser
-BuildRequires:	perl-HTTP-Body >= 0.4
-BuildRequires:	perl-HTTP-Request-AsCGI
+BuildRequires:	perl-HTTP-Body >= 0.5
+BuildRequires:	perl-HTTP-Request-AsCGI >= 0.5
 BuildRequires:	perl-libwww
 BuildRequires:	perl-Module-Pluggable-Fast >= 0.16
 BuildRequires:	perl-Path-Class >= 0.09
 BuildRequires:	perl-Template-Toolkit
-BuildRequires:	perl-Text-SimpleTable
-BuildRequires:	perl-Tree-Simple
+BuildRequires:	perl-Text-SimpleTable >= 0.03
+BuildRequires:	perl-Tree-Simple >= 1.15
 BuildRequires:	perl-Tree-Simple-VisitorFactory
 BuildRequires:	perl-UNIVERSAL-require >= 0.10
 BuildRequires:	perl-URI >= 1.35
+BuildRequires:	perl-YAML >= 0.52
 %endif
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -88,17 +90,18 @@ Silnik Catalyst dla SpeedyCGI.
 %setup -q -n Catalyst-%{version}
 
 %build
-%{__perl} Build.PL \
-        destdir=$RPM_BUILD_ROOT \
-        installdirs=vendor
-./Build
+%{__perl} Makefile.PL \
+        INSTALLDIRS=vendor \
+	--skipdeps
+%{__make}
 
-%{?with_tests:./Build test}
+%{?with_tests:%{__make} test}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-./Build install
+%{__make} install \
+        DESTDIR=$RPM_BUILD_ROOT 
 
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model}
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{View,Model}
@@ -108,7 +111,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README
+%doc Changes
 %{perl_vendorlib}/Catalyst.pm
 %dir %{perl_vendorlib}/Catalyst
 %{perl_vendorlib}/Catalyst/*.pm
