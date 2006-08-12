@@ -6,16 +6,17 @@
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.64
-Release:	0.1
+Version:	5.7001
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-%{version}.tar.gz
-# Source0-md5:	ef4da8facfd1e4e71b42ae3a4eb47432
+Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
+# Source0-md5:	595fcfcac3372e252ec07ae25daaa1d5
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
+BuildRequires:	perl-CGI-Simple
 BuildRequires:	perl-Class-Accessor
 BuildRequires:	perl-Class-Data-Inheritable
 BuildRequires:	perl-ExtUtils-AutoInstall
@@ -23,9 +24,8 @@ BuildRequires:	perl-HTML-Parser
 BuildRequires:	perl-HTTP-Body >= 0.5
 BuildRequires:	perl-HTTP-Request-AsCGI >= 0.5
 BuildRequires:	perl-libwww
-BuildRequires:	perl-Module-Pluggable-Fast >= 0.16
+BuildRequires:	perl-Module-Pluggable >= 3.01
 BuildRequires:	perl-Path-Class >= 0.09
-BuildRequires:	perl-Template-Toolkit
 BuildRequires:	perl-Text-SimpleTable >= 0.03
 BuildRequires:	perl-Tree-Simple >= 1.15
 BuildRequires:	perl-Tree-Simple-VisitorFactory
@@ -75,19 +75,8 @@ This is the Catalyst engine for FastCGI.
 %description Engine-FastCGI -l pl
 Silnik Catalyst dla FastCGI.
 
-%package Engine-SpeedyCGI
-Summary:	Engine for SpeedyCGI
-Summary(pl):	Silnik dla SpeedyCGI
-Group:		Development/Languages/Perl
-
-%description Engine-SpeedyCGI
-This is the Catalyst engine for SpeedyCGI.
-
-%description Engine-SpeedyCGI -l pl
-Silnik Catalyst dla SpeedyCGI.
-
 %prep
-%setup -q -n Catalyst-%{version}
+%setup -q -n Catalyst-Runtime-%{version}
 
 %build
 %{__perl} Makefile.PL \
@@ -103,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
         DESTDIR=$RPM_BUILD_ROOT 
 
-install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model}
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model,Plugin,Action}
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{View,Model}
 
 %clean
@@ -120,7 +109,10 @@ rm -rf $RPM_BUILD_ROOT
 %{perl_vendorlib}/Catalyst/DispatchType
 %dir %{perl_vendorlib}/Catalyst/View
 %dir %{perl_vendorlib}/Catalyst/Model
+%dir %{perl_vendorlib}/Catalyst/Action
 %{perl_vendorlib}/Catalyst/Plugin
+%{perl_vendorlib}/Catalyst/Manual.pod
+%{perl_vendorlib}/Catalyst/Manual
 %exclude %{perl_vendorlib}/Catalyst/Engine/FastCGI*
 
 %{perl_vendorlib}/Catalyst/Request
