@@ -33,6 +33,8 @@ BuildRequires:	perl-UNIVERSAL-require >= 0.10
 BuildRequires:	perl-URI >= 1.35
 BuildRequires:	perl-YAML >= 0.55
 %endif
+Obsoletes:	perl-Catalyst-Engine-CGI-APR
+Obsoletes:	perl-Catalyst-Engine-FastCGI-APR
 Obsoletes:	perl-Catalyst-Engine-SpeedyCGI
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
