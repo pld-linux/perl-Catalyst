@@ -4,7 +4,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	Catalyst - The Elegant MVC Web Application Framework
-Summary(pl):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
+Summary(pl.UTF-8):   Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
 Version:	5.7001
 Release:	2
@@ -54,29 +54,29 @@ modify code that handles one concern without affecting code that
 handles the others. Catalyst promotes the re-use of existing Perl
 modules that already handle common web application concerns well.
 
-%description -l pl
+%description -l pl.UTF-8
 Catalyst to elegancki szkielet dla aplikacji WWW, ekstremalnie
-elastyczny, ale i ekstremalnie prosty. Jest podobny do ¶rodowisk Ruby
-on Rails, Spring (Java) czy Maypole, na którym by³ oryginalnie oparty.
+elastyczny, ale i ekstremalnie prosty. Jest podobny do Å›rodowisk Ruby
+on Rails, Spring (Java) czy Maypole, na ktÃ³rym byÅ‚ oryginalnie oparty.
 
 Catalyst jest zgodny ze wzorem projektowym MVC (Model-View-Controller
-- model-widok-kontroler), pozwalaj±c na ³atwe rozdzielenie rzeczy
-takich jak tre¶æ, prezentacja i kontrola ruchu na oddzielne modu³y.
-Ten podzia³ pozwala na modyfikowanie kodu obs³uguj±cego jedn± rzecz
-bez wp³ywania na kod obs³uguj±cy co innego. Catalyst skutecznie
-poszerza wielokrotn± u¿ywalno¶æ istniej±cych modu³ów perla
-obs³uguj±cych ró¿ne aspekty aplikacji WWW.
+- model-widok-kontroler), pozwalajÄ…c na Å‚atwe rozdzielenie rzeczy
+takich jak treÅ›Ä‡, prezentacja i kontrola ruchu na oddzielne moduÅ‚y.
+Ten podziaÅ‚ pozwala na modyfikowanie kodu obsÅ‚ugujÄ…cego jednÄ… rzecz
+bez wpÅ‚ywania na kod obsÅ‚ugujÄ…cy co innego. Catalyst skutecznie
+poszerza wielokrotnÄ… uÅ¼ywalnoÅ›Ä‡ istniejÄ…cych moduÅ‚Ã³w perla
+obsÅ‚ugujÄ…cych rÃ³Å¼ne aspekty aplikacji WWW.
 
 
 %package Engine-FastCGI
 Summary:	Engine for FastCGI
-Summary(pl):	Silnik dla FastCGI
+Summary(pl.UTF-8):   Silnik dla FastCGI
 Group:		Development/Languages/Perl
 
 %description Engine-FastCGI
 This is the Catalyst engine for FastCGI.
 
-%description Engine-FastCGI -l pl
+%description Engine-FastCGI -l pl.UTF-8
 Silnik Catalyst dla FastCGI.
 
 %prep
