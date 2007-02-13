@@ -4,7 +4,7 @@
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	Catalyst - The Elegant MVC Web Application Framework
-Summary(pl.UTF-8):   Catalyst - elegancki szkielet MVC dla aplikacji WWW
+Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
 Version:	5.7001
 Release:	2
@@ -70,7 +70,7 @@ obsługujących różne aspekty aplikacji WWW.
 
 %package Engine-FastCGI
 Summary:	Engine for FastCGI
-Summary(pl.UTF-8):   Silnik dla FastCGI
+Summary(pl.UTF-8):	Silnik dla FastCGI
 Group:		Development/Languages/Perl
 
 %description Engine-FastCGI
