@@ -6,14 +6,14 @@
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.7007
-Release:	2
+Version:	5.7010
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 URL:		http://www.catalystframework.org/
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
-# Source0-md5:	2d4d22d4153b49d64ed715bfd81d809d
+# Source0-md5:	3a88955a049b60bfa5a95ccee77f6fe2
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -23,7 +23,7 @@ BuildRequires:	perl-Class-Data-Inheritable
 BuildRequires:	perl-Data-Dump
 BuildRequires:	perl-ExtUtils-AutoInstall
 BuildRequires:	perl-HTML-Parser
-BuildRequires:	perl-HTTP-Body >= 0.5
+BuildRequires:	perl-HTTP-Body >= 0.9
 BuildRequires:	perl-HTTP-Request-AsCGI >= 0.5
 BuildRequires:	perl-libwww
 BuildRequires:	perl-Module-Pluggable >= 3.01
@@ -117,8 +117,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorlib}/Catalyst/Model
 %dir %{perl_vendorlib}/Catalyst/Action
 %{perl_vendorlib}/Catalyst/Plugin
-%{perl_vendorlib}/Catalyst/Manual.pod
-%{perl_vendorlib}/Catalyst/Manual
 %exclude %{perl_vendorlib}/Catalyst/Engine/FastCGI*
 
 %{perl_vendorlib}/Catalyst/Request
