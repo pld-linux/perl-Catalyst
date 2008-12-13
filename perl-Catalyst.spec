@@ -11,9 +11,9 @@ Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-URL:		http://www.catalystframework.org/
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
 # Source0-md5:	b072cd434585676b075b41ccc9775ee9
+URL:		http://www.catalystframework.org/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
@@ -25,7 +25,6 @@ BuildRequires:	perl-ExtUtils-AutoInstall
 BuildRequires:	perl-HTML-Parser
 BuildRequires:	perl-HTTP-Body >= 0.9
 BuildRequires:	perl-HTTP-Request-AsCGI >= 0.5
-BuildRequires:	perl-libwww
 BuildRequires:	perl-Module-Pluggable >= 3.01
 BuildRequires:	perl-Path-Class >= 0.09
 BuildRequires:	perl-Text-SimpleTable >= 0.03
@@ -34,6 +33,7 @@ BuildRequires:	perl-Tree-Simple-VisitorFactory
 BuildRequires:	perl-UNIVERSAL-require >= 0.10
 BuildRequires:	perl-URI >= 1.35
 BuildRequires:	perl-YAML >= 0.55
+BuildRequires:	perl-libwww
 %endif
 Requires:	perl-HTTP-Request-AsCGI
 Obsoletes:	perl-Catalyst-Engine-CGI-APR
@@ -86,7 +86,7 @@ Silnik Catalyst dla FastCGI.
 
 %build
 %{__perl} Makefile.PL \
-        INSTALLDIRS=vendor \
+	INSTALLDIRS=vendor \
 	--skipdeps
 %{__make}
 
@@ -96,7 +96,7 @@ Silnik Catalyst dla FastCGI.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-        DESTDIR=$RPM_BUILD_ROOT 
+	DESTDIR=$RPM_BUILD_ROOT 
 
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model,Plugin,Action}
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{View,Model}
@@ -125,7 +125,6 @@ rm -rf $RPM_BUILD_ROOT
 %exclude %{_mandir}/man3/*FastCGI*
 %{_mandir}/man3/*
 %{_mandir}/man1/*
-
 
 %files Engine-FastCGI
 %defattr(644,root,root,755)
