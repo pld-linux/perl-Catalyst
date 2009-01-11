@@ -7,7 +7,7 @@ Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
 Version:	5.7015
-Release:	1
+Release:	2
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
@@ -98,7 +98,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT 
 
-install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model,Plugin,Action}
+install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View,Model,Plugin/HTML,Action}
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{View,Model}
 
 %clean
