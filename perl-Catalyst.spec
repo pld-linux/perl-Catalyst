@@ -6,13 +6,13 @@
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.7015
-Release:	3
+Version:	5.71000
+Release:	1
 # same as perl
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
-# Source0-md5:	b072cd434585676b075b41ccc9775ee9
+# Source0-md5:	d92966ae79d5ad3d7768809acd4886ea
 URL:		http://www.catalystframework.org/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
@@ -23,7 +23,7 @@ BuildRequires:	perl-Class-Data-Inheritable
 BuildRequires:	perl-Data-Dump
 BuildRequires:	perl-ExtUtils-AutoInstall
 BuildRequires:	perl-HTML-Parser
-BuildRequires:	perl-HTTP-Body >= 0.9
+BuildRequires:	perl-HTTP-Body >= 1.04
 BuildRequires:	perl-HTTP-Request-AsCGI >= 0.5
 BuildRequires:	perl-Module-Pluggable >= 3.01
 BuildRequires:	perl-Path-Class >= 0.09
