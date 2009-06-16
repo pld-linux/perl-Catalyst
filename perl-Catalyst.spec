@@ -8,14 +8,13 @@ Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
 Version:	5.80005
 Release:	1
-# same as perl
+Source0:        http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
 # Source0-md5:	d7d78a4ef83a2799c4c698a81d6bf7ca
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 URL:		http://www.catalystframework.org/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
-Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
 %if %{with tests}
 BuildRequires:	perl-CGI-Simple
 BuildRequires:	perl-Catalyst-Devel
