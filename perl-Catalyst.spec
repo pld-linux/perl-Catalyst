@@ -1,39 +1,47 @@
 #
 # Conditional build:
-%bcond_without	tests		# do not perform "make test"
+%bcond_with	tests		# perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.71000
-Release:	2
+Version:	5.80005
+Release:	1
 # same as perl
+# Source0-md5:	d7d78a4ef83a2799c4c698a81d6bf7ca
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
-Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
-# Source0-md5:	d92966ae79d5ad3d7768809acd4886ea
 URL:		http://www.catalystframework.org/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
+Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
 %if %{with tests}
 BuildRequires:	perl-CGI-Simple
-BuildRequires:	perl-Class-Accessor
+BuildRequires:	perl-Catalyst-Devel
+BuildRequires:	perl-Class-C3-Adopt-NEXT >= 0.07
 BuildRequires:	perl-Class-Data-Inheritable
+BuildRequires:	perl-Class-MOP >= 0.83
 BuildRequires:	perl-Data-Dump
-BuildRequires:	perl-ExtUtils-AutoInstall
+BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
+BuildRequires:	perl-File-Modified
 BuildRequires:	perl-HTML-Parser
 BuildRequires:	perl-HTTP-Body >= 1.04
-BuildRequires:	perl-HTTP-Request-AsCGI >= 0.5
-BuildRequires:	perl-Module-Pluggable >= 3.01
+BuildRequires:	perl-HTTP-Request-AsCGI >= 0.8
+BuildRequires:	perl-MRO-Compat
+BuildRequires:	perl-Moose >= 0.78
+BuildRequires:	perl-MooseX-Emulate-Class-Accessor-Fast >= 0.00801
+BuildRequires:	perl-MooseX-MethodAttributes >= 0.12
 BuildRequires:	perl-Path-Class >= 0.09
+BuildRequires:	perl-Sub-Exporter
+BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-MockObject >= 1.07
 BuildRequires:	perl-Text-SimpleTable >= 0.03
 BuildRequires:	perl-Tree-Simple >= 1.15
 BuildRequires:	perl-Tree-Simple-VisitorFactory
-BuildRequires:	perl-UNIVERSAL-require >= 0.10
 BuildRequires:	perl-URI >= 1.35
-BuildRequires:	perl-YAML >= 0.55
 BuildRequires:	perl-libwww
+BuildRequires:	perl-namespace-clean
 %endif
 Requires:	perl-HTTP-Request-AsCGI
 Obsoletes:	perl-Catalyst-Engine-CGI-APR
@@ -63,11 +71,11 @@ on Rails, Spring (Java) czy Maypole, na którym był oryginalnie oparty.
 
 Catalyst jest zgodny ze wzorem projektowym MVC (Model-View-Controller
 - model-widok-kontroler), pozwalając na łatwe rozdzielenie rzeczy
-takich jak treść, prezentacja i kontrola ruchu na oddzielne moduły.
-Ten podział pozwala na modyfikowanie kodu obsługującego jedną rzecz
-bez wpływania na kod obsługujący co innego. Catalyst skutecznie
-poszerza wielokrotną używalność istniejących modułów perla
-obsługujących różne aspekty aplikacji WWW.
+  takich jak treść, prezentacja i kontrola ruchu na oddzielne moduły.
+  Ten podział pozwala na modyfikowanie kodu obsługującego jedną rzecz
+  bez wpływania na kod obsługujący co innego. Catalyst skutecznie
+  poszerza wielokrotną używalność istniejących modułów perla
+  obsługujących różne aspekty aplikacji WWW.
 
 
 %package Engine-FastCGI
@@ -86,8 +94,8 @@ Silnik Catalyst dla FastCGI.
 
 %build
 %{__perl} Makefile.PL \
-	INSTALLDIRS=vendor \
-	--skipdeps
+	INSTALLDIRS=vendor
+#: \	--skipdeps
 %{__make}
 
 %{?with_tests:%{__make} test}
@@ -96,7 +104,7 @@ Silnik Catalyst dla FastCGI.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT 
+	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/{View/REST,Model,Plugin/HTML,Action}
 install -d $RPM_BUILD_ROOT%{perl_vendorlib}/Catalyst/Helper/{View,Model}
@@ -107,7 +115,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes
+%doc Changes README TODO
 %{perl_vendorlib}/Catalyst.pm
 %dir %{perl_vendorlib}/Catalyst
 %dir %{perl_vendorlib}/CatalystX
@@ -121,6 +129,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{perl_vendorlib}/Catalyst/Model
 %dir %{perl_vendorlib}/Catalyst/Action
 %{perl_vendorlib}/Catalyst/Plugin
+%{perl_vendorlib}/Catalyst/Component/ApplicationAttribute.pm
 %exclude %{perl_vendorlib}/Catalyst/Engine/FastCGI*
 
 %{perl_vendorlib}/Catalyst/Request
