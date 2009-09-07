@@ -7,43 +7,43 @@ Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
 Version:	5.80011
-Release:	2
+Release:	3
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
 # Source0-md5:	96f09897079c6a13e1c0375b3a94ad4f
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 URL:		http://www.catalystframework.org/
+BuildRequires:	perl(Class::C3::Adopt::NEXT) >= 0.07
+BuildRequires:	perl(HTTP::Request::AsCGI) >= 0.8
+BuildRequires:	perl(Module::Pluggable) >= 3.9
+BuildRequires:	perl(MooseX::Emulate::Class::Accessor::Fast) >= 0.00801
+BuildRequires:	perl(MooseX::MethodAttributes::Inheritable) >= 0.15
+BuildRequires:	perl(String::RewritePrefix) >= 0.004
+BuildRequires:	perl(namespace::autoclean)
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-B-Hooks-EndOfScope >= 0.08
 BuildRequires:	perl-CGI-Simple
-BuildRequires:	perl-Class-C3-Adopt-NEXT >= 0.07
+BuildRequires:	perl-Class-Data-Inheritable
 BuildRequires:	perl-Class-MOP >= 0.83
 BuildRequires:	perl-Data-Dump
+BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
 BuildRequires:	perl-HTML-Parser
 BuildRequires:	perl-HTTP-Body >= 1.04
-BuildRequires:	perl-HTTP-Request-AsCGI >= 0.8
-BuildRequires:	perl-libwww
 BuildRequires:	perl-List-MoreUtils
-BuildRequires:	perl-Moose >= 0.78
-BuildRequires:	perl-Module-Pluggable >= 3.9
-BuildRequires:	perl-MooseX-Emulate-Class-Accessor-Fast >= 0.00801
-BuildRequires:	perl-MooseX-MethodAttributes >= 0.15
 BuildRequires:	perl-MRO-Compat
-BuildRequires:	perl-namespace-autoclean
-BuildRequires:	perl-namespace-clean
+BuildRequires:	perl-Moose >= 0.78
 BuildRequires:	perl-Path-Class >= 0.09
-BuildRequires:	perl-String-RewritePrefix >= 0.004
 BuildRequires:	perl-Sub-Exporter
 BuildRequires:	perl-Task-Weaken
+BuildRequires:	perl-Test-Exception
 BuildRequires:	perl-Text-SimpleTable >= 0.03
 BuildRequires:	perl-Tree-Simple >= 1.15
 BuildRequires:	perl-Tree-Simple-VisitorFactory
 BuildRequires:	perl-URI >= 1.35
-BuildRequires:	perl-Class-Data-Inheritable
-BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
-BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-libwww
+BuildRequires:	perl-namespace-clean
 %endif
 Requires:	perl-HTTP-Request-AsCGI
 Obsoletes:	perl-Catalyst-Engine-CGI-APR
