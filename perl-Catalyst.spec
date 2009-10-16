@@ -1,40 +1,39 @@
 #
 # Conditional build:
-%bcond_with	tests		# perform "make test"
+%bcond_without	tests		# do not perform "make test"
 #
 %include	/usr/lib/rpm/macros.perl
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.80012
+Version:	5.80013
 Release:	1
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
-# Source0-md5:	46c2c282628dce7db74e37bcd1eced49
+# Source0-md5:	b26b464360594b7eb231caf78c0bb1ef
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 URL:		http://www.catalystframework.org/
-BuildRequires:	perl(Class::C3::Adopt::NEXT) >= 0.07
-BuildRequires:	perl(HTTP::Request::AsCGI) >= 0.8
-BuildRequires:	perl(Module::Pluggable) >= 3.9
-BuildRequires:	perl(MooseX::Emulate::Class::Accessor::Fast) >= 0.00801
-BuildRequires:	perl(MooseX::MethodAttributes::Inheritable) >= 0.15
-BuildRequires:	perl(String::RewritePrefix) >= 0.004
-BuildRequires:	perl(namespace::autoclean)
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
 BuildRequires:	perl-B-Hooks-EndOfScope >= 0.08
 BuildRequires:	perl-CGI-Simple
+BuildRequires:	perl-Class-C3-Adopt-NEXT >= 0.07
 BuildRequires:	perl-Class-Data-Inheritable
 BuildRequires:	perl-Class-MOP >= 0.83
 BuildRequires:	perl-Data-Dump
 BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
 BuildRequires:	perl-HTML-Parser
 BuildRequires:	perl-HTTP-Body >= 1.04
+BuildRequires:	perl-HTTP-Request-AsCGI >= 0.8
 BuildRequires:	perl-List-MoreUtils
 BuildRequires:	perl-MRO-Compat
-BuildRequires:	perl-Moose >= 0.78
+BuildRequires:	perl-Module-Pluggable >= 3.9
+BuildRequires:	perl-Moose >= 0.90
+BuildRequires:	perl-MooseX-Emulate-Class-Accessor-Fast >= 0.00903
+BuildRequires:	perl-MooseX-MethodAttributes >= 0.16
 BuildRequires:	perl-Path-Class >= 0.09
+BuildRequires:	perl-String-RewritePrefix >= 0.004
 BuildRequires:	perl-Sub-Exporter
 BuildRequires:	perl-Task-Weaken
 BuildRequires:	perl-Test-Exception
@@ -43,6 +42,7 @@ BuildRequires:	perl-Tree-Simple >= 1.15
 BuildRequires:	perl-Tree-Simple-VisitorFactory
 BuildRequires:	perl-URI >= 1.35
 BuildRequires:	perl-libwww
+BuildRequires:	perl-namespace-autoclean >= 0.09
 BuildRequires:	perl-namespace-clean
 %endif
 Requires:	perl(Term::Size::Any)
