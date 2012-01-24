@@ -7,7 +7,7 @@ Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
 Version:	5.90007
-Release:	4
+Release:	5
 Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
 # Source0-md5:	ca0beb8f4067ee576d24569a0d89f00f
 License:	GPL v1+ or Artistic
@@ -39,6 +39,7 @@ BuildRequires:	perl-MooseX-Getopt >= 0.30
 BuildRequires:	perl-MooseX-MethodAttributes >= 0.24
 BuildRequires:	perl-MooseX-Role-WithOverloading >= 0.09
 BuildRequires:	perl(MooseX::Role::WithOverloading) >= 0.09
+BuildRequires:	perl(MooseX::Types::Common::Numeric)
 BuildRequires:	perl-MooseX-Types-LoadableClass >= 0.003
 BuildRequires:	perl-Path-Class >= 0.09
 BuildRequires:	perl-Plack >= 0.9974
