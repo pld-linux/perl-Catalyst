@@ -5,60 +5,65 @@
 Summary:	Catalyst - The Elegant MVC Web Application Framework
 Summary(pl.UTF-8):	Catalyst - elegancki szkielet MVC dla aplikacji WWW
 Name:		perl-Catalyst
-Version:	5.90007
-Release:	6
-Source0:	http://www.cpan.org/modules/by-module/Catalyst/Catalyst-Runtime-%{version}.tar.gz
-# Source0-md5:	ca0beb8f4067ee576d24569a0d89f00f
+Version:	5.90132
+Release:	1
+Source0:	https://www.cpan.org/authors/id/J/JJ/JJNAPIORK/Catalyst-Runtime-%{version}.tar.gz
+# Source0-md5:	ce3b03cc998fcef45d5a0bd49d923caf
 License:	GPL v1+ or Artistic
 Group:		Development/Languages/Perl
 URL:		http://www.catalystframework.org/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
 %if %{with tests}
-BuildRequires:	perl-B-Hooks-EndOfScope >= 0.08
 BuildRequires:	perl(CGI::Simple::Cookie) >= 1.109
+BuildRequires:	perl-CGI-Struct
 BuildRequires:	perl-Class-C3-Adopt-NEXT >= 0.07
-BuildRequires:	perl-Class-Data-Inheritable
-BuildRequires:	perl-Class-MOP >= 0.95
 BuildRequires:	perl-Class-Load >= 0.12
 BuildRequires:	perl-Data-Dump
-BuildRequires:	perl-ExtUtils-MakeMaker >= 6.42
+BuildRequires:	perl-Data-OptList
 BuildRequires:	perl-HTML-Parser
-BuildRequires:	perl-HTTP-Body >= 1.06
+BuildRequires:	perl-HTTP-Body >= 1.22
+BuildRequires:	perl-HTTP-Headers-ActionPack
 BuildRequires:	perl(HTTP::Headers) >= 1.64
 BuildRequires:	perl(HTTP::Request) >= 5.814
-BuildRequires:	perl-HTTP-Request-AsCGI >= 1.0
 BuildRequires:	perl(HTTP::Response) >= 5.813
-BuildRequires:	perl-List-MoreUtils
+BuildRequires:	perl-Hash-MultiValue
+BuildRequires:	perl-JSON-MaybeXS >= 1.000000
 BuildRequires:	perl-MRO-Compat
-BuildRequires:	perl-Module-Pluggable >= 3.9
-BuildRequires:	perl-Moose >= 1.03
+BuildRequires:	perl-Module-Pluggable >= 4.7
+BuildRequires:	perl-Moose >= 2.1400
 BuildRequires:	perl-MooseX-Emulate-Class-Accessor-Fast >= 0.00903
-BuildRequires:	perl-MooseX-Getopt >= 0.30
+BuildRequires:	perl-MooseX-Getopt >= 0.48
 BuildRequires:	perl-MooseX-MethodAttributes >= 0.24
-BuildRequires:	perl-MooseX-Role-WithOverloading >= 0.09
-BuildRequires:	perl(MooseX::Role::WithOverloading) >= 0.09
-BuildRequires:	perl(MooseX::Types::Common::Numeric)
-BuildRequires:	perl-MooseX-Types-LoadableClass >= 0.003
 BuildRequires:	perl-Path-Class >= 0.09
-BuildRequires:	perl-Plack >= 0.9974
-BuildRequires:	perl-Plack-Middleware-ReverseProxy  >= 0.04
+BuildRequires:	perl-PerlIO-utf8_strict
+BuildRequires:	perl-Plack >= 0.9991
+BuildRequires:	perl-Plack-Middleware-FixMissingBodyInRedirect >= 0.09
+BuildRequires:	perl-Plack-Middleware-MethodOverride >= 0.12
+BuildRequires:	perl-Plack-Middleware-RemoveRedundantBody >= 0.03
+BuildRequires:	perl-Plack-Middleware-ReverseProxy >= 0.04
 BuildRequires:	perl-Plack-Test-ExternalServer
+BuildRequires:	perl-Safe-Isa
+BuildRequires:	perl-Stream-Buffered
 BuildRequires:	perl-String-RewritePrefix >= 0.004
 BuildRequires:	perl-Sub-Exporter
 BuildRequires:	perl-Task-Weaken
-#BuildRequires:	perl-Task-More >= 0.88
-BuildRequires:	perl-Test-Exception
+BuildRequires:	perl-Test-Fatal
 BuildRequires:	perl-Text-SimpleTable >= 0.03
 BuildRequires:	perl-Tree-Simple >= 1.15
 BuildRequires:	perl-Tree-Simple-VisitorFactory
-BuildRequires:	perl-URI >= 1.35
-BuildRequires:	perl-libwww
-BuildRequires:	perl-namespace-autoclean >= 0.09
-BuildRequires:	perl-namespace-clean >= 0.13
+BuildRequires:	perl-Try-Tiny >= 0.17
+BuildRequires:	perl-Type-Tiny
+BuildRequires:	perl-URI >= 1.65
+BuildRequires:	perl-libwww >= 5.837
+BuildRequires:	perl-namespace-clean >= 0.23
 %endif
 Requires:	perl(Term::Size::Any)
-Requires:	perl-HTTP-Request-AsCGI
+Requires:	perl-CGI-Struct
+Requires:	perl-JSON-MaybeXS >= 1.000000
+Requires:	perl-Type-Tiny
+Requires:	perl-URI >= 1.65
+Requires:	perl-libwww >= 5.837
 Obsoletes:	perl-Catalyst-Engine-CGI-APR
 Obsoletes:	perl-Catalyst-Engine-FastCGI
 Obsoletes:	perl-Catalyst-Engine-FastCGI-APR
@@ -119,24 +124,26 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes README TODO
+%doc Changes README
 %{perl_vendorlib}/Catalyst.pm
 %dir %{perl_vendorlib}/Catalyst
 %dir %{perl_vendorlib}/CatalystX
 %{perl_vendorlib}/Catalyst/*.pm
+%{perl_vendorlib}/Catalyst/*.pod
+%{perl_vendorlib}/Catalyst/ActionRole
 %{perl_vendorlib}/Catalyst/Component
 %{perl_vendorlib}/Catalyst/DispatchType
 %{perl_vendorlib}/Catalyst/Engine
 %{perl_vendorlib}/Catalyst/Exception
 %{perl_vendorlib}/Catalyst/Helper
+%{perl_vendorlib}/Catalyst/Middleware
 %{perl_vendorlib}/Catalyst/Model
 %dir %{perl_vendorlib}/Catalyst/View
 %dir %{perl_vendorlib}/Catalyst/View/REST
-%dir %{perl_vendorlib}/Catalyst/Model
 %dir %{perl_vendorlib}/Catalyst/Action
 %{perl_vendorlib}/Catalyst/Plugin
-%{perl_vendorlib}/Catalyst/Component/ApplicationAttribute.pm
 %{perl_vendorlib}/Catalyst/Request
+%{perl_vendorlib}/Catalyst/Response
 %{perl_vendorlib}/Catalyst/Script
 %attr(755,root,root) %{_bindir}/catalyst.pl
 %{_mandir}/man3/*
